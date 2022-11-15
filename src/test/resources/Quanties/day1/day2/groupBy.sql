@@ -58,7 +58,16 @@ order by max(salary), min(salary) desc;
     order by count(*) desc;
 
 -- display how many countries we have in each regions
-select REGION_ID from COUNTRIES
-group by REGION_ID
-order by count(*) desc;
+    select REGION_ID, count(*) from COUNTRIES
+    group by REGION_ID;
+
+    -- order them based number of countries in desc
+    select REGION_ID,count(*) from COUNTRIES
+    group by REGION_ID
+    order by 2 desc;
+
+    select REGION_ID,count(*) from COUNTRIES
+    group by REGION_ID
+    order by count(*) desc;
+
 
