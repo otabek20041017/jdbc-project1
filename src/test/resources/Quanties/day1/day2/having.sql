@@ -21,4 +21,5 @@ having count(*)>5;
 -- IQ --> display duplicate firstnames from employees table
 select first_name, count(*) from employees
 group by first_name
-having count(*)>1;
+having count(*)>1
+order by 2 desc;
