@@ -1,0 +1,52 @@
+select * from employees;
+
+/*
+
+ it limits rows based on provided number
+
+ */
+
+select * from EMPLOYEES
+where rownum<11;
+
+-- display all information from employees who is getting first 5 highest salary
+
+-- BAD PRACTICE
+-- It is getting data before order than based salary and
+-- cut the list line 6 the it trie to order them between first 5 rows
+-- That is why we are getting WRONG LIST
+select * from EMPLOYEES
+where ROWNUM<=6
+order by SALARY desc;
+
+-- CORRECT ANSWER
+select * from (select * from EMPLOYEES order by SALARY desc )
+where ROWNUM<6;
+
+
+-- display all information who is getting 5th highest salary
+-- display all different salaries in desc order
+select distinct SALARY from EMPLOYEES order by SALARY desc;
+
+-- display 5th highest salary
+select min(salary) from (select distinct salary from EMPLOYEES order by salary desc)
+where ROWNUM<6;
+
+
+-- who is getting 5th highest salary
+select * from EMPLOYEES
+where salary = (select min(salary) from ( select distinct SALARY from EMPLOYEES order by SALARY desc )
+                where rownum<6);
+
+
+
+
+
+
+--- IQ --> display all information who is getting 213th highest salary
+
+    select * from EMPLOYEES
+    where salary = (select min(salary) from (select distinct salary from EMPLOYEES order by salary desc)
+                                       where ROWNUM<214)
+
+
