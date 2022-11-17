@@ -17,9 +17,15 @@ having count(*)>5;
     having count(*)>5
     order by 2 desc;
 
-
 -- IQ --> display duplicate firstnames from employees table
 select first_name,count(*) from employees
+group by first_name
+having count(*)>1
+order by 2 desc;
+
+
+
+select first_name,count(*) as fisrtname_count from employees
 group by first_name
 having count(*)>1
 order by 2 desc;
